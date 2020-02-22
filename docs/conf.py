@@ -35,13 +35,16 @@ extensions = ['sphinxcontrib.plantuml', 'sphinx.ext.graphviz']
 #plantuml = 'java -jar  -Djava.awt.headless=true %s' % os.path.join(os.path.dirname(__file__), "../utils/plantuml.jar")
 
 from sys import platform
-if platform == "linux" or platform == "linux2":
-    plantuml = '/usr/bin/plantuml -Djava.awt.headless=true '
-elif platform == "darwin":
-    plantuml = 'java -jar  -Djava.awt.headless=true %s' % os.path.join(os.path.dirname(__file__), "../utils/plantuml.jar")
-elif platform == "win32":
-    plantuml = 'java -jar  -Djava.awt.headless=true %s' % os.path.join(os.path.dirname(__file__), "../utils/plantuml.jar")
-
+on_rtd = os.environ.get('READTHEDOCS') == 'True'
+if on_rtd:
+    plantuml = 'java -Djava.awt.headless=true -jar /usr/share/plantuml/plantuml.jar'
+else:    
+    if platform == "linux" or platform == "linux2":
+        plantuml = '/usr/bin/plantuml -Djava.awt.headless=true '
+    elif platform == "darwin":
+        plantuml = 'java -jar  -Djava.awt.headless=true %s' % os.path.join(os.path.dirname(__file__), "../utils/plantuml.jar")
+    elif platform == "win32":
+        plantuml = 'java -jar  -Djava.awt.headless=true %s' % os.path.join(os.path.dirname(__file__), "../utils/plantuml.jar")
 
 
 plantuml_output_format = 'svg'
