@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.abspath(''))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinxcontrib.plantuml', 'sphinx.ext.graphviz']
+extensions = ['sphinxcontrib.plantuml', 'sphinxcontrib.needs']# 'sphinx.ext.graphviz']
 
 # Define full path to use plantuml without non interactively
 #plantuml = 'java -jar  -Djava.awt.headless=true %s' % os.path.join(os.path.dirname(__file__), "../utils/plantuml.jar")
